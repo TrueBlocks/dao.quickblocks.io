@@ -1,0 +1,9 @@
+On Mac:
+	stop apache
+	cd to quickblocks.io folder
+	npm start
+	open http://localhost:3000
+
+On Digital Ocean:
+	pm2 start node bin/www
+	Make sure to change port to 80 in bin/www if you upload code from Mac

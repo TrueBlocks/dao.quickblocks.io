@@ -1,0 +1,23 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		.row
+			.col-lg-12
+				h1.page-header The Recovery Period
+		.row
+			.col-lg-12
+				.panel.panel-info
+					.panel-heading
+						| <a></a>
+					.panel-body
+						#detailRecoveryChart
+					.panel-footer
+						p <!-- This chart is incomplete due to the previously mentioned lack of "internal transactions" in our analysis. The large number of <b>approve</b> function calls on "The DAO" should be matched by a similar number of <b>transferFrom</b> calls, but these calls are made by the Withdraw contract. While the calls on this contract are represented above by the shaded aread behind hte bar chart, the directly calls to "The DAO"s <b>transferFrom</b> are not present. This is because these calls are made internally to the Withdraw contract's <b>withdraw</b> function and therefore, do not appears on the blockchain. -->
+						p <!-- Notice that people are still calling newProposal (split) but not newProposal (non-split). -->
+						p Analysis coming soon...
+		include nav/navFooter.jade
+
+	script(src='https://code.highcharts.com/highcharts.js')
+	script(src='https://code.highcharts.com/modules/exporting.js')
+	script(src='js/detailRecoveryChart.js')

@@ -1,0 +1,46 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		.row
+			.col-lg-12
+				h1.page-header Four Periods of "The DAO"
+		.row
+			.col-lg-12
+				.panel.panel-default
+					.panel-heading
+						| <div id="wrapper"></div>
+					.panel-body
+						#all_byFuncDay
+					.panel-footer
+						p In our analysis of The DAO, we've identified four distinct periods (1) the <a href=/detailCreation>Creation Period</a>, (2) the <a href=/detailOperational>Operational Period</a>, (3) the <a href=/detailPostHack>Post-Hack Period</a>, and (4) the <a href=/detailRecovery>Recovery Period</a>. The start of each period is signaled by an uptick in activity as can be seen by the green- and orange-shaded areas above.
+						p We've designated the first obvious period of activity as the <a href=/detailCreation>Creation Period</a>. This period is dominated by 'purchasing events' (in pink) to the exclusion of all other operations. (These 'other operations' were unavailable during creation.) Noteworthy is the spike in token creation on May 15th which was the beginning of the step-wise increase in token prices. A further spike in activity is seen at the end of the creation period.
+						p A huge spike in activity immediately after the creation period marks the beginning of the <a href=/detailOperational>Operational Period</a>. This period exhibits a varied set of function calls, mostly 'approve' and 'transferFrom'. Much of this activity was initiated by a very few accounts assumed to be exchanges acting on behalf of their clients. Notice the comparatively slight activity related to voting and proposal making (small purple-blue area near bottom of chart). This activity disappears soon after the hack. Voting and proposal making characterize the Operational Period. There is some proposal making after the hack, but this was carried out primarily by the white hat group.
+						p The next large spike in activity marks the beginning of the <a href=/detailPostHack>Post Hack</a> period. After an initial flurry of 'panic transfers', the period is characterized by relative quiescence and declining voting activity due, we believe, to uncertainty and an early direct instruction from 'the white hat group' to refrain from interacting with The DAO.
+						p The final period we've identified, the <a href=/detailRecovery>Recovery Period</a>, is marked by another spike in first 'approval' and then 'transferFrom' function calls. This activity coincides with the advent of the DAO WithDraw contract and is primarily the result of users reclaiming their ether through that two-step process.
+						p A possible fifth period may be emerging starting around August 19th; however, we do not discuss this fifth period here.
+						p <b>Notes:</b> The effect of the hack on the price of Ether is very obvious, as is--a few days after the hard fork--the effect of Ether Classic not dying a peaceful death. All transactions represented on these charts exclude "in-error" transactions unless otherwise noted. "Functional groups" are further explained below. <b>TODO:</b> display the total accumulated ether and DAO tokens as well as the value of the ether in US dollars. At the hack nTokens and nEther will diverge.
+			.col-lg-12
+				.panel.panel-default
+					.panel-heading
+						| Function Calls by Count
+					.panel-body
+						.dataTable_wrapper
+							include sumDAO_table.jade
+
+		include nav/navFooter.jade
+
+	script(src='bower_components/raphael/raphael-min.js')
+	script(src='bower_components/morrisjs/morris.min.js')
+	script(src='bower_components/datatables/media/js/jquery.dataTables.min.js')
+	script(src='bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js')
+	script(src='bower_components/datatables-responsive/js/dataTables.responsive.js')
+	script.
+		$(document).ready(function() {
+		$('#dataTables-example').DataTable({
+			responsive: true
+		});
+		});
+	script(src='https://code.highcharts.com/highcharts.js')
+	script(src='https://code.highcharts.com/modules/exporting.js')
+	script(src='js/all_byFuncDay.js')

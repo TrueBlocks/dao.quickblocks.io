@@ -1,0 +1,24 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		.row
+			.col-lg-12
+				h1.page-header The Post-Hack Period
+		.row
+			.col-lg-12
+				.panel.panel-info
+					.panel-heading
+						| <a></a>
+					.panel-body
+						#detailPostHackChart
+					.panel-footer
+						p <!-- -->
+						p <!-- -->
+						p Analysis coming soon...
+
+		include nav/navFooter.jade
+
+	script(src='https://code.highcharts.com/highcharts.js')
+	script(src='https://code.highcharts.com/modules/exporting.js')
+	script(src='js/detailPostHackChart.js')

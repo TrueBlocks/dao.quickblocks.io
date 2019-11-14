@@ -1,0 +1,42 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		title QuickBlocks.io (powered by EthSlurp)
+		link(href='../bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+		link(href='../bower_components/metisMenu/dist/metisMenu.min.css', rel='stylesheet')
+		link(href='../bower_components/bootstrap-social/bootstrap-social.css', rel='stylesheet')
+		link(href='../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css', rel='stylesheet')
+		link(href='../bower_components/datatables-responsive/css/dataTables.responsive.css', rel='stylesheet')
+		link(href='../dist/css/timeline.css', rel='stylesheet')
+		link(href='../dist/css/sb-admin-2.css', rel='stylesheet')
+		link(href='../bower_components/morrisjs/morris.css', rel='stylesheet')
+		link(href='../bower_components/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+		link(href='../stylesheets/custom.css', rel='stylesheet')
+		// HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+		// WARNING: Respond.js doesn't work if you view the page via file://
+		//if lt IE 9
+			script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+			script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+	body
+		- var name        = locals.nconf.get('name')
+		- var addr        = locals.nconf.get('address')
+		- var url         = locals.nconf.get('url')
+		- var locked      = locals.nconf.get('locked')
+		- var functional  = locals.nconf.get('functionalView')
+		- var event       = locals.nconf.get('eventView')
+		- var account     = locals.nconf.get('accountView')
+		- var transaction = locals.nconf.get('transactionView')
+		- var token       = locals.nconf.get('tokenView')
+		- var gas         = locals.nconf.get('gasView')
+		- var showAll     = false
+		#wrapper
+			nav.navbar.navbar-default.navbar-static-top(role='navigation', style='margin-bottom: 0')
+				include navhome.jade
+				include navtop.jade
+				include navside.jade
+			block content

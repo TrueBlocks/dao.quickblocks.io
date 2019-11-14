@@ -1,0 +1,51 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		.row
+			.col-lg-12
+				h1.page-header Contact Us
+		.row
+			.col-lg-12
+				.panel.panel-info
+					.panel-heading
+						| Great Hill Corporation
+					.panel-body
+						br
+						ul
+							p Send us your comments, concerns, or questions about any of our software. If you would like to participate in our open source project, check out the EthSlurp website.
+							link(href='//cdn-images.mailchimp.com/embedcode/slim-10_7.css', rel='stylesheet', type='text/css')
+							style(type='text/css').
+								#mc_embed_signup{ background:#0; clear:left; }
+							#mc_embed_signup
+								form#mc-embedded-subscribe-form.validate(action='//greathill.us13.list-manage.com/subscribe/post?u=0f575df228777a77b38269d96&id=d59515863c', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='')
+										#mc_embed_signup_scroll
+											input#mce-EMAIL.email(type='email', value='', name='EMAIL', placeholder='email address', required='')
+											div(style='position: absolute; left: -5000px;', aria-hidden='true')
+												input(type='text', name='b_0f575df228777a77b38269d96_d59515863c', tabindex='-1', value='')
+											.clear
+												input#mc-embedded-subscribe.button(type='submit', value='Submit', name='subscribe')
+
+							br
+							| QuickBlocks.io and EthSlurp are copyrighted products of Great Hill Corporation
+							br
+							a(href="mailto:info@greathill.com") info@greathill.com
+							br
+							| +1 01 610 519-9413
+							br
+							a(href="https://github.com/Great-Hill-Corporation/ethslurp",target="_blank")
+								img(src="images/octocat.png")
+							a(href="https://twitter.com/EthSlurp",target="_blank")
+								img(src="images/twitter.png")
+							a(href="https://www.facebook.com/GreatHillCorporation/",target="_blank")
+								img(src="images/facebook.png")
+							br
+							i
+								small
+									h6 icons by dave gandy or freepic at http://www.flaticon.com
+
+		include nav/navFooter.jade
+
+	script(src='bower_components/raphael/raphael-min.js')
+	script(src='bower_components/morrisjs/morris.min.js')
+	script(src='js/morris-data.js')

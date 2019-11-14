@@ -1,0 +1,112 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		.row
+			.col-lg-12
+				h1.page-header Settings
+
+		.row
+			.col-lg-6
+				.panel.panel-info
+					.panel-heading
+						| Contract Details
+					.panel-body
+						p In this section we collect together information about the smart contract. Note that, once established and locked, you may not change the Ethereum address nor the Solidity source code associated with this contract. This is by design, and if you think about it for a second, makes perfect sense due to the immutability of the blockchain (barring hard forks).
+						form(role='form')
+							.form-group
+								label Contract Name
+								input.form-control(placeholder='Enter the name of your contract',name='name',value=name)
+							.form-group
+								label Contract Address
+								input.form-control(placeholder='0x...Enter your contract\'s Ethereum address.',name='address',value=addr)
+								p.help-block Once set, this data item may not be changed.
+							.form-group
+								label Contract URL
+								input.form-control(placeholder='https://dao.quickblocks.io',disabled='',name='url',value=url)
+								p.help-block This data item was created on setup and may not be changed.
+							.form-group
+								label Locking
+								.checkbox
+									label
+										input(type='checkbox',value='',name='locked',checked=(locked))
+										| Lock this contract (once locked, you may no longer change the contract's address)
+			.col-lg-6
+				.panel.panel-info
+					.panel-heading
+						| Contract Source Code
+					.panel-body
+						p In order to take full advantage of QuickBlocks.io, you need to supply your contract's Solidity source code. Given that, we can discover all we need to know to provide a full, informative, meaning analysis of your contract.
+						label Source Code
+						textarea.form-control(rows='16',placeholder='Copy and Paste your contract\'s Solidity source code here...')
+
+		.row
+			.col-lg-6
+				.panel.panel-info
+					.panel-heading
+						| Included Views
+					.panel-body
+						.form-group
+							.row
+								.col-lg-1
+								.col-lg-3
+									.checkbox
+										label
+											input(type='checkbox',name='functional',checked=(functional))
+											| Functional View
+									.checkbox
+										label
+											input(type='checkbox',name='transaction',checked=(transaction))
+											| Transactions View
+								.col-lg-3
+									.checkbox
+										label
+											input(type='checkbox',name='event',checked=(event))
+											| Event View
+									.checkbox
+										label
+											input(type='checkbox',name='token',checked=(token))
+											| Token View
+								.col-lg-3
+									.checkbox
+										label
+											input(type='checkbox',name='account',checked=(account))
+											| Account View
+									.checkbox
+										label
+											input(type='checkbox',name='gas',checked=(gas))
+											| Gas View
+								.col-lg-2
+			.col-lg-6
+				.panel.panel-info
+					.panel-heading
+						| Related Contracts
+					.panel-body
+						p A list of Solidity contracts related to the present contract
+						ul
+							li
+								a(target='_blank', href='https://dao_curator.quickblocks.io/') https://dao_curator.quickblocks.io
+							li
+								a(target='_blank', href='https://dao_withdraw.quickblocks.io/') https://dao_withdraw.quickblocks.io
+
+		.row
+			.col-lg-12
+				.panel.panel-info
+					.panel-heading
+						| Other Settings
+					.panel-body
+						p
+							| Flot is a pure JavaScript plotting library for jQuery, with a focus on simple usage, attractive looks, and interactive features. In SB Admin, we are using the most recent version of Flot along with a few plugins to enhance the user experience. The Flot plugins being used are the tooltip plugin for hoverable tooltips, and the resize plugin for fully responsive charts. The documentation for Flot Charts is available on their website,
+							a(target='_blank', href='http://www.flotcharts.org/') http://www.flotcharts.org/
+							| .
+						a.btn.btn-default.btn-lg.btn-block(target='_blank', href='http://www.flotcharts.org/') View Flot Charts Documentation
+
+		include nav/navFooter.jade
+
+	script(src='flot/excanvas.min.js')
+	script(src='flot/jquery.flot.js')
+	script(src='flot/jquery.flot.pie.js')
+	script(src='flot/jquery.flot.resize.js')
+	script(src='flot/jquery.flot.time.js')
+	script(src='flot.tooltip/js/jquery.flot.tooltip.min.js')
+	script(src='js/flot-data.js')

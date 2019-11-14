@@ -1,0 +1,44 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		.row
+			.col-lg-12
+				h1.page-header Frequently Asked Questions
+		.row
+			.col-lg-12
+				.panel.panel-info
+					.panel-body
+						ul
+							li
+								b What are you actually selling?
+								br
+								p Once fully deployed, we intend to sell three things: (1) subdomain accounts setup to view your own particular smart contract, (2) private installation of quickblock.io and EthSlurp on your own private blockchain, and (3) consulting services associated with each of these first two items, providing smart contract consulting, custom smart contract website design, subdomain hosting, and perhaps (in some future version) private accounts for each of your smart contract's users.
+							li
+								b Isn't QuickBlock.io just an old-fashioned web 2.0 website with all the problems associated with that. What ever happened to web 3.0 and decentralized, unhackable web design?
+								br
+								p We're waiting just like you. As we move our offerings forward, we fully intend to provide as robust and as private a website presence as we can. Having said that, we also fully intend to make money, so we will see how things shake out.
+							li
+								b Isn't QuickBlocks.io providing the same functionality I can get with a regular Ethereum wallet such as Mist?
+								br
+								p No. QuickBlocks.io never accesses your wallet and therefore never exposes anything that can steal your ether. We provide information about your smart contract in the belief that your end user need this information. Think back to The DAO debacle. We at Great Hill Corporation think that one of the great shortcomings that effort, was the total lack of effective methods by which to communicate to the user base. Ignoring the fact that there was supposed to be no central "communitcating body" because of the "D" in DAO, there was in fact a central group of "maintainers" or "operatives" or whatever you would like to call them, and a huge group of poorly informed users. A web wallet, Mist, Meta Mask--none of these things addresses that issue. This is the central mission of a QuickBlocks.io enabled smart contract website.
+							li
+								b May I use QuickBlocks.io for my own accounts or does it work only on smart contracts?
+								br
+								p In its first incarnation, QuickBlocks.io is intended to host smart contract informational website; however, nothing precludes you from using the site to watch your own Ethereum addresses (be they smart contracts or just regular accounts). In an imagined future incarnation, you will be able to create a user account on QuickBlock.io and associate all your various activities. For example, you can consolidate information about all of your regular accounts making visible your own activity. Further, due to the nature of the Blockchain, once given an account, we can display any smart contracts you've interacted with, thereby further giving you insight into your activity in this exciting world.
+
+							li
+								b Is your website safe? What if it's hacked?
+								br
+								p The first part of this answer is that we never, in any way, interact with anyone's Ethereum wallets. In this sense, we're perfectly safe. No-one can steal ether from us, if we never hold ether. Secondly, we intend to follow all best practices to protect our regular web 2.0 website from all the web 2.0 hacks that happen. In this regard, we can present only our history with Great Hill Corporation and Calendars for the Web. Our online scheduling software has been online for nearly 20 years. Fingers crossed.
+
+							li
+								b What about IoT?
+								br
+								p The most exciting aspect, we think, of the entire Ethereum world is how it so perfectly meets up with IoT. Projections have billions of IoT devices in the world in the near future. We ask the question "Who will pay for that?" We think the answer is in the IoT devices themselves--using billions of tiny little Ethereum wallets accepting millionths of a penny per operation. One of our great visions is to provide "accounting" for that revolution. QuickBlocks.io is our first step in that direction.
+
+		include nav/navFooter.jade
+
+	script(src='bower_components/raphael/raphael-min.js')
+	script(src='bower_components/morrisjs/morris.min.js')
+	script(src='js/morris-data.js')

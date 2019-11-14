@@ -1,0 +1,73 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		.row
+			.col-lg-12
+				h1.page-header The Creation Period
+		.row
+			.col-lg-12
+				.panel.panel-info
+					.panel-heading
+						| <a></a>
+					.panel-body
+						#detailCreationChart
+					.panel-footer
+						.row
+							.col-lg-12
+								h4 Remarks
+								p The DAO's creation period lasted for 28 days from April 30, 2016, 09:00 UTC to May 28, 2016, 09:00 UTC. During this time, much of The DAO's functionality was disabled, resulting in primarily three functions being used: <b>createTokenProxy</b>, <b>approve</b>, and <b>function()</b>. According to <a target=_blank href="https://etherscan.io/token/TheDAO">EtherScan</a>, more than one billion DAO tokens were created during the period.
+
+								p Nearly two-thirds (66.35%) of the 62,873 interactions during the period were calls to the default <b>function()</b>, whose <a target=_blank href="https://github.com/slockit/DAO/blob/develop/DAO.sol#L392">code</a> is quite simple: either the function creates tokens through <b>createTokenProxy</b>, or, if called after the creation period but before the end of the grace period, returns the ether to the caller, or, if later, it simply keeps the ether. When taken together, <b>createTokenProxy</b> and <b>function()</b> account for 91.86% of all interactions during this period. The remaining 8.14% of interactions were <b>approve</b> calls which are discussed below.
+
+							.col-lg-8
+								.panel.panel-info
+									.panel-heading
+										h5(style="display:inline" align="center") By the Numbers
+									.panel-body
+										.col-lg-4
+											#event-donut-chart
+										.col-lg-8
+											.dataTable_wrapper
+												include detailCreationTable_1.jade
+							.col-lg-4
+								h4 Further Details
+								p Ignoring the <b>approve</b> functions (the green, undulating area in the chart), for a moment we first focus on the chart's overall shape. The initial flurry of activity, followed by a lessening in interactions, followed by a growing interest, then another lessening, leading, finally, to a period of growing interest, is easily explained, as is the growing use of <b>createTokenProxy</b> relative to the direct sending of ether.
+
+								p Early purchasers of DAO tokens had clearly been anticipating its arrival and were ready to act on the first day. We believe these people were technically more adept, which is hinted at by the significantly more frequent use of direct sends (orange bar) when compared with <b>createTokenProxy</b> (black bar) during the first few days. One might notice that as more purchasers appeared, the difference between the number of times <b>function()</b> was used relative to <b>createTokenProxy</b> lessens. We believe this is due to these new users using various tutorials explaining how to purchase DAO tokens. Many of these tutorials instructed users to use the Mist browser and from there, the <b>createTokenProxy</b> function.
+								p Of course, this is only conjecture.
+
+							.col-lg-12
+								p At the start of the creation period a single ether purchased 100 DAO tokens. Midway through the period, the number of tokens per ether began a steady ten-day increase of 5% per day until reaching 150 DAO tokens per ether, where it remained for the last four days of the period. This behavior is explained <a target=_blank href="https://github.com/slockit/DAO/wiki/Understanding-the-DAO-accounting">here</a>. This shift in token price explains the increasing activity approaching May 15th, the first day of the price increase. Notice, however, that the spike actually occurs on May 14th, one day before the change in the token ratio. This larger than expected number of purchases on the 14th is due, we think, to an error on the DAO Hub website (see <a target=_blank href="https://forum.daohub.org/t/the-dao-price-increase-explanation/2018">this DAOHub discussion</a> and this <a target=_blank href="https://m.reddit.com/r/TheDao/comments/4jap6d/the_dao_creation_period_price_schedule_there_is/">reddit post</a>). It seems the maintainers of the DAOHub website made a mistake and mis-reported the date of the increase in token prices.
+
+								h4 Approve Calls
+
+								p The undulating green area referenced above represents calls to the <b>approve</b> function, one of the few functions that were available during this period. It is our belief that these calls were most likely made by an exchange practicing or testing its software. We believe this because the number of <b>approve</b> calls follows a surprising pattern.
+
+								p For most of the first eight days during which the <b>approve</b> function is called at all, it is called an even multiple of 100 times. It is called 310 times, then 100 times, then 200, then 300, 200, 500, 200, and 200 times in each 24-hour period. This pattern is revealed in the consistent heights of the green-shaded area above. These '100-transaction' sets were clearly generated by software of some kind. This becomes obvious in the table below which is presented without further comment. Most likely these interactions are exchanges (or other smart contracts) testing in preparation for the <a href="/detailOperational">Operational Period</a> to which we move next.
+
+								.panel.panel-info
+									.panel-heading
+										h5 Approval Calls Made During Creation Period
+									.panel-body
+										.dataTable_wrapper
+											include detailCreationTable_2.jade
+								p <b>Notes:</b> Missing from this analysis is the ether value accumulated by the DAO during the period. While this information is easily available, we hope eventually to make the extraction of this type of information automatic. We are working on providing this capability as soon as possible. Also missing from this page is an analysis of 'internal transactions.' Again, this functionality is in the works; however, we believe the number of internal transactions is not a material omission. According to one analysis, less than 1% of interactions during the period were internal transactions. We do not have the data to support this claim, however.
+
+		include nav/navFooter.jade
+
+	script(src='https://code.highcharts.com/highcharts.js')
+	script(src='https://code.highcharts.com/modules/exporting.js')
+	script(src='bower_components/raphael/raphael-min.js')
+	script(src='bower_components/morrisjs/morris.min.js')
+	script(src='js/event_shit.js')
+	script(src='bower_components/datatables/media/js/jquery.dataTables.min.js')
+	script(src='bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js')
+	script(src='bower_components/datatables-responsive/js/dataTables.responsive.js')
+	script.
+		$(document).ready(function() {
+			$('#dataTables-example').DataTable({
+			responsive: true
+			});
+		});
+	script(src='js/detailCreationChart.js')

@@ -1,0 +1,11 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		h1= title
+		form#formAddItem(name="editForm",method="post",action="/otherEditForm")
+			input#inputHash(type="text", placeholder="hash", name="hash")
+			input#inputFrom(type="text", placeholder="from", name="from")
+			button#btnSubmit(type="submit") submit
+
+		include nav/navFooter.jade

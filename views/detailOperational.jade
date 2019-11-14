@@ -1,0 +1,74 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		.row
+			.col-lg-12
+				h1.page-header The Operational Period
+		.row
+			.col-lg-3
+				.panel.panel-info
+					.panel-heading
+						| <a></a>
+					.panel-body
+						#detailOperationalChart_1
+					.panel-footer
+						p The <b>Operational Period</b> began with a huge amount of activity during the 24 hours immediately following the end of the <a href="/detailCreation">Creation Period</a>. During the first day after creation, there were 15,821 transactions, nearly 9,000 more transactions than the previous day. For clarity, we've separated out this unusual day in a chart of its own. The first thing to notice on this page, therefore, is the difference in the y-axis scale between the above chart and its neighbor whose scale is 1/4 as large.
+			.col-lg-9
+				.panel.panel-info
+					.panel-heading
+						| <a></a>
+					.panel-body
+						#detailOperationalChart_2
+					.panel-footer
+						p Looking more closely at the high level of activity on the first day, we find three accounts initiated nearly all of these transactions. Of the 5,448 <b>approve</b> function calls, all but 12 were approvals of a single account. Furthermore, of the 5,553 calls to <b>transferFrom</b>, 5,496 designated one of three accounts as the recipient. We believe these accounts were probably exchanges. An indication of this is that the <b>transferFrom</b> and <b>approve</b> function calls outnumber the <b>transfer</b> calls on this first day, whereas the opposite it true for the remainder of the period. <b>Approve</b> and <b>transferFrom</b> are used to move money out of an account after that account has given permission for the caller to do so. This feature would most likely be used by an exchange.
+						p Above one may notice--as will be true for all periods we've analyzed--that <b>transfer</b>, <b>transferFrom</b>, and <b>approve</b> dominate the interactions with the contract. The total number of interactions decreases over the period, but it turns out this is just the calm before the storm. We shall see this when we look at the <a href="/detailPostFork">Post Fork</a> period.
+						p In the remaining charts on this page, we've removed the first day of the period as well as these high-frequency calls (<b>transfer</b>, <b>transferFrom</b>, and <b>approve</b>). We do this to make the lesser-called functions more easy to study.
+			.col-lg-12
+				.panel.panel-info
+					.panel-heading
+						| <a></a>
+					.panel-footer
+						.row
+							.col-lg-4
+								h3 Voting and Proposals
+								p The chart to the right shows interactions excluding the high-frequency functions noted above. These lesser used functions are related to proposal making, voting, and splitting from the DAO. In this view, we see a background of voting fronted by two types of proposals: split proposals, of which there were 116, and non-split proposals, of which there were 11 (during the period). Additionally we see <b>splitDAO</b> calls.
+								p When a user calls <b>newProposal</b>, she provides an on/off flag called <b>newCurator</b> which distinguishes between the two proposal types. Within the non-split proposal type, there is a further distinction. If the recipient address of a non-split proposal is the contract itself (or its curator), this proposal becomes a 'vote-only' proposal. The famous "Do you believe in God" proposal is an example. The list of proposals is presented below.
+								p We briefly discuss split proposals below, however, we look more closely at this flawed process in the <a href="">Post Hack</a> section of our analysis. Following that we discuss the eleven non-split proposals.
+							.col-lg-8
+								#detailOperationalChart_3
+						.row
+							.col-lg-12
+								h4 Split Proposals and Splitting the DAO
+								p One notices in the chart to the right the seven day delay between the various spikes in split proposals from the actual <b>splitDAO</b> calls (which appear in black). This is a function of the debating period in the source code.
+							.col-lg-12
+								h4 Voting on Non-Split Proposals
+								p The table below presents a list of the eleven non-split proposals made during the Operational Period. (A non-split proposal is one made with the <b>newCurator</b> parameter set to <b>No</b>.) Note that there were sixteen additional non-split proposals made after the hack, however, each of these later proposals was made by the white hat group (or others) in attempts to recover the lost ether. Those later proposals will be discussed in <a href=/detailPostHack>the Post Hack section of this analysis</a>.
+								p An interesting aspect of each of these eleven proposals is that they were all made with "The DAO" (or its curator) as the recipient. In this case, unlike a non-split proposal with a different recipient, the proposal serves only as a 'vote-only' proposal. If any of these eleven proposals had passed (none did because of the quorum), the 'amount' requested would have simply been re-directed to the DAO itself. There were no proposals made during the Operational Period that were not 'vote-only', likely as a result of <a target=_blank href="http://hackingdistributed.com/2016/05/27/dao-call-for-moratorium/">this blog post</a>, one of whose authors (<b>Zamphir</b>) was one of The DAO's curators.
+								p Another interesting aspect of the voting is that in all cases the number of votes <i>per participant</i> revealed the same sentiment as those same votes when looked at from a <i>per token</i> viewpoint. Some writers voiced the concern that "whales" would come to dominate the voting since they had many more tokens, and the total number of tokens voted is what determines the outcome. This fear seems to have not materialized (at least in this small sample).
+								p The final interesting aspect of the voting is the low participation rate. The single most voted on proposal (proposal 17) received just barely 750 individual votes. Estimates have between 20,000 to 25,000 token holders at any given time. This is less than a 5% voting participation rate. It is our belief that this low voting participation rate is due to many factors. Among these factors was lack of clear information about both the proposals themselves and the voting process, a poor and confusing user interface in the Mist browser making interacting with the contract more difficult that it needed to be for non-technical users, fear of having ones tokens locked during the voting period, and in some cases apathy, lack of attention, and otherwise busy lives. This extremely low voting-participation rate is, in our opinion, the greatest shortcoming of the entire DAO adventure. If future smart contracts of this nature (operational management by particpant voting) is to succeed, there needs be a much better way to engage voters.
+							.col-lg-12
+								p(align="center") - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+								.dataTable_wrapper
+									include detailOperationalTable.jade
+							.col-lg-12
+								h3 Conclusion
+								p The Operational Period ended about as abruptly as is possible at 3:34:48 UTC on June 17, 2016 when an unknown assailant either stole 31.6% of The DAO's ether or used a particularly obscure feature of the smart contract to elicit the now-famous <a target=_blank href="https://www.reddit.com/r/ethereum/comments/4oi2ta/i_think_thedao_is_getting_drained_right_now/">"I think the DAO is being drained right now"</a> reddit post. In the <a href="/detailPostHack">Post Hack</a> portion of our analysis, we take a good hard look at what happened during the hack. We discuss the other type of proposal not discussed here (Split Proposal) and the <b>splitDAO</b> function. It is the <b>splitDAO</b> "feature" that brought the beautiful dream of The DAO to its tragic end. We look forward to presenting an analysis of the Post Hack period soon.
+
+		include nav/navFooter.jade
+
+	script(src='https://code.highcharts.com/highcharts.js')
+	script(src='https://code.highcharts.com/modules/exporting.js')
+	script(src='bower_components/datatables/media/js/jquery.dataTables.min.js')
+	script(src='bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js')
+	script(src='bower_components/datatables-responsive/js/dataTables.responsive.js')
+	script.
+		$(document).ready(function() {
+			$('#dataTables-example').DataTable({
+			responsive: true
+			});
+		});
+	script(src='js/detailCreationChart.js')
+	script(src='js/detailOperationalChart_1.js')
+	script(src='js/detailOperationalChart_2.js')
+	script(src='js/detailOperationalChart_3.js')

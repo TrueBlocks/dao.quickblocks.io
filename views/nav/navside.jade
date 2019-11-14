@@ -1,0 +1,113 @@
+.navbar-default.sidebar(role='navigation')
+	.sidebar-nav.navbar-collapse
+		ul#side-menu.nav
+			if (true)
+				li.sidebar-search
+					.input-group.custom-search-form
+						input.form-control(type='text', placeholder='Search...')
+						span.input-group-btn
+							button.btn.btn-default(type='button')
+								i.fa.fa-search
+			if (showAll)
+				li
+					a(href='/index')
+						i.fa.fa-dashboard.fa-fw
+						|	Dashboard
+
+			li
+				a(href='#')
+					i.fa.fa-eye.fa-fw
+					|	The DAO
+					span.fa.arrow
+				ul.nav.nav-second-level
+					li
+						a(href='/overview') Overview
+					li
+						a(href='/detailCreation') Creation Period
+					li
+						a(href='/detailOperational') Operational Period
+					li
+						a(href='/detailPostHack') Post-Hack Period
+					li
+						a(href='/detailRecovery') Recovery Period
+
+			li
+				a(href='/sumCurator')
+					i.fa.fa-eye.fa-fw
+					|	Curator Multisig
+
+			if (showAll)
+				li
+					a(href='#')
+						i.fa.fa-table.fa-fw
+						|	Contracts
+						span.fa.arrow
+					ul.nav.nav-second-level
+						li
+							a(href='/srcSolidity') Solidity Code
+						li
+							a(href='/srcABI') ABI Code
+						li
+							a(href='/srcGas') Gas Costs
+			if (true)
+				li
+					a(href='/settings')
+						i.fa.fa-gears.fa-fw
+						|	Settings
+			li
+				a(href='/usFAQ')
+					i.fa.fa-info-circle.fa-fw
+					|	FAQ
+			li
+				a(href='/usAbout')
+					i.fa.fa-info-circle.fa-fw
+					|	About Us
+			li
+				a(href='/usContact')
+					i.fa.fa-envelope.fa-fw
+					|	Contact Us
+			if (showAll)
+				li
+					a(href='#')
+						i.fa.fa-wrench.fa-fw
+						|	UI Elements
+						span.fa.arrow
+					ul.nav.nav-second-level
+						li
+							a(href='/otherFlotChart') Flot Chart
+						li
+							a(href='/otherMorrisChart') Morris Chart
+						li
+							a(href='/otherTables') Tables
+						li
+							a(href='/otherForms') Forms
+						li
+							a(href='/otherPanels') Panels and Wells
+						li
+							a(href='/otherButtons') Buttons
+						li
+							a(href='/otherNotifications') Notifications
+						li
+							a(href='/otherTypography') Typography
+						li
+							a(href='/otherIcons') Icons
+						li
+							a(href='/otherGrid') Grid
+						li
+							a(href='/otherEthSlurp') EthSlurp
+						li
+							a(href='/otherEditForm') Add Record
+						li
+							a(href='#')
+								i.fa.fa-sitemap.fa-fw
+								|	Multi-Level Dropdown
+								span.fa.arrow
+							ul.nav.nav-third-level
+								li
+									a(href='#') Third Level Item
+								li
+									a(href='#') Third Level Item
+						li
+							a(href='/otherBlank') Blank Page
+						li
+							a(href='/otherLogin') Login Page

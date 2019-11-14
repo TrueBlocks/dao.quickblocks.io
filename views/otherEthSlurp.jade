@@ -1,0 +1,12 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		h1.
+			Results from EthSlurp
+			ul
+			each item in ethslurp
+				li
+					a(href="https://etherscan.com/tx/#{item.hash}")= item.from
+
+		include nav/navFooter.jade

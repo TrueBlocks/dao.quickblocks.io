@@ -1,0 +1,54 @@
+extends nav/layout
+
+block content
+	#page-wrapper
+		.row
+			.col-lg-12
+				h1.page-header About Us
+		.row
+			.col-lg-4
+				.panel.panel-info
+					.panel-heading
+						h5 QuickBlocks.io
+					.panel-body
+						center
+							img(src="images/logo.png",height="250px")
+						br
+						p QuickBlocks.io provides information about various aspects of any Ethereum smart contract. We accomplish this by 'slurping' the Ethereum blockchain (using EthSlurp) if you give us a single input: your validated solidity source code. Using the source code, we can generate an ABI (Application Binary Interface) which gives us all the information we need to provide the insightful data analysis and charting you see on this sample website. Give us your solidity code, we'll give you a website just like this.
+						br
+					.panel-footer
+						a(href="http://www.quickblocks.io",target="_blank") http://www.quickblocks.io
+
+			.col-lg-4
+				.panel.panel-info
+					.panel-heading
+						h5 EthSlurp
+					.panel-body
+						center
+							img(src="images/ethslurp_logo.png",height="250px",width="85%")
+						br
+						p EthSlurp allows users to 'slurp' the Ethereum blockchain extracting transactions and events from any Ethereum address, including smart contracts. Given this slurped data, the user may then store this information in familiar file formats such as .csv, .txt, or even popular database formats. Behind the scenes, QuickBlocks.io uses EthSlurp to provide 'pre-compiled' or 'pre-formatted' data to its many charts and data analysis tables. The EthSlurp software is open source.
+						br
+					.panel-footer
+						a(href="http://www.ethslurp.com",target="_blank") http://www.ethslurp.com
+
+			.col-lg-4
+				.panel.panel-info
+					.panel-heading
+						h5 Great Hill Corporation
+					.panel-body
+						center
+							img(src="images/gh_logo.png",height="250px")
+						br
+						p
+							| Great Hill Corporation, the over-arching organization for all our efforts, has been selling internet-based software since 1995. In 1996, we released our first version of&nbsp;
+							a(href="http://www.calendarhost.com",target="_blank") Calendars for the Web
+							| , a popular interactive online calendaring/scheduling software, one of the earliest examples of hosted, online software. We've continued providing this service, enabling 1,000s of clients to coordinate shared resources among their many participants. Our dedication to quality software and customer service is reflected in our long, fruitful relationships with our clients.
+					.panel-footer
+						a(href='https://github.com/Great-Hill-Corporation',target="_blank") http://www.greathill.com
+
+		include nav/navFooter.jade
+
+	script(src='bower_components/raphael/raphael-min.js')
+	script(src='bower_components/morrisjs/morris.min.js')
+	script(src='js/morris-data.js')
